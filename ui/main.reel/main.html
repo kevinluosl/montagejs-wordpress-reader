@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>
+        Main
+    </title>
+    <link rel="stylesheet" type="text/css" href="main.css">
+    <script type="text/montage-serialization">
+    {
+        "owner": {
+            "prototype": "ui/main.reel",
+            "properties": {
+                "element": {"#": "main"}
+            }
+        },
+
+        "rssController": {
+            "prototype": "core/controllers/rss-controller",
+            "properties": {
+                "rssUrl": "http://104.131.138.118/wp-json"
+            },
+            "bindings": {
+                "category": {"<-": "@feedSelectController.selection.0.slug"},
+                "filterTerm": {"<-": "@searchTermInput.value"}
+            }
+        },
+
+        "articleCount": {
+            "prototype": "digit/ui/badge.reel",
+            "properties": {
+                "element": {"#": "articleCount"}
+            },
+            "bindings": {
+                "value": {"<-": "@rssController.articles.filter{!isRead}.length"}
+            }
+        },
+        "articleList": {
+            "prototype": "digit/ui/list.reel",
+            "properties": {
+                "element": {"#": "articleList"},
+                "contentController": {"@": "articleListController"},
+                "isSelectionEnabled": true
+            }
+        },
+        "articleListController": {
+            "prototype": "montage/core/range-controller",
+            "bindings": {
+                "content": {"<-": "@rssController.articles"}
+            }
+        },
+        "articlePreview": {
+            "prototype": "ui/article-preview.reel",
+            "properties": {
+                "element": {"#": "articlePreview"}
+            },
+            "bindings": {
+                "article": {"<-": "@articleList:iteration.object"}
+            }
+        },
+        "feedSelect": {
+            "prototype": "digit/ui/select.reel",
+            "properties": {
+                "element": {"#": "feedSelect"},
+                "contentController": {"@": "feedSelectController"},
+                "labelPropertyName": "name",
+                "textPropertyPath": "name",
+                "valuePropertyPath": "slug"
+            }
+        },
+        "feedSelectController": {
+            "prototype": "montage/core/range-controller",
+            "bindings": {
+                "content": {"<-": "@rssController.categories"}
+            }
+        },
+
+        "rssView": {
+            "prototype": "ui/rss-view.reel",
+            "properties": {
+                "element": {"#": "rssView"}
+            },
+            "bindings": {
+                "article": {"<-": "@articleListController.selection.0"},
+                 "site": {"<-": "@rssController.site"}
+            }
+        },
+        "searchTermInput": {
+            "prototype": "digit/ui/text-field.reel",
+            "properties": {
+                "element": {"#": "searchTermInput"},
+                "placeholder": "Filter"
+            }
+        }
+    }
+
+
+
+    </script>
+</head>
+<body>
+<div data-montage-id="main" class="rssDemo-Main">
+    <aside class="rssDemo-Main-aside" data-montage-skin="dark">
+        <header class="rssDemo-Main-aside-header">
+            <input data-montage-id="searchTermInput" class="rssDemo-Main-aside-header-filter" type="text">
+            <span data-montage-id="articleCount" class="rssDemo-Main-aside-header-count"></span>
+        </header>
+        <ul data-montage-id="articleList" class="rssDemo-Main-articleList">
+            <li data-montage-id="articlePreview"></li>
+        </ul>
+        <footer class="rssDemo-Main-aside-footer">
+            <select data-montage-id="feedSelect" class="rssDemo-Main-aside-footer-select"></select>
+        </footer>
+    </aside>
+    <div data-montage-id="rssView" class="rssDemo-Main-rssView"></div>
+</div>
+</body>
+</html>

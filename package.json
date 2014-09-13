@@ -1,0 +1,18 @@
+{
+	"name": "wordpress-reader",
+	"version": "0.1.0",
+	"private": true,
+	"dependencies": {
+		"montage": "git+ssh://git@github.com:montagejs/montage.git#60753749bbf392557e9fc4f39b3ac969d01a7e96",
+		"digit": "0.5.1",
+		"matte": "~0.2.0"
+	},
+	"devDependencies": {
+		"montage-testing": "0.4.0"
+	},
+	"exclude": [
+		"run-tests.html",
+		"test"
+	],
+	"bundle": [ "ui/main.reel" ]
+}

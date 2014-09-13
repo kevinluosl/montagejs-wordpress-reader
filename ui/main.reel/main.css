@@ -1,0 +1,112 @@
+.rssDemo-Main {
+
+}
+
+.rssDemo-Main-aside {
+    position: absolute;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 30%;
+    -webkit-user-select: none;
+}
+
+.rssDemo-Main-articleList {
+    -webkit-box-flex: 1;
+    position: relative;
+    width: 100%;
+    background: hsl(0,0%,20%);
+}
+
+.rssDemo-Main-articleList .digit-List-repetition {
+    -webkit-animation: list-fx .3s cubic-bezier(0.030, 0.440, 0.250, 1.000);
+}
+
+@-webkit-keyframes list-fx {
+    from {
+        -webkit-transform: translate3d(0,66px,0);
+        opacity: 0;
+    }
+}
+
+[data-montage-skin="dark"] .digit-ListItem.active {
+    box-shadow: none;
+    background: hsl(0,0%,23%);
+}
+
+
+/* Header ------------------------------------------- */
+
+.rssDemo-Main-aside-header {
+    display: -webkit-box;
+    -webkit-box-align: center;
+    padding: 15px;
+    background: -webkit-linear-gradient( hsl(0,0%,50%), hsl(0,0%,40%) );
+    border-bottom: 1px solid hsla(0,0%,0%,0.7);
+}
+
+.rssDemo-Main-aside-header-filter {
+    display: block;
+    margin: 0 15px 0 0;
+    -webkit-box-flex: 1;
+}
+
+.rssDemo-Main-aside-header-count {
+    display: block;
+    margin: 0;
+    line-height: 33px;
+    padding: 0 12px;
+}
+
+
+/* Footer ------------------------------------------- */
+
+.rssDemo-Main-aside-footer {
+    display: -webkit-box;
+    -webkit-box-align: center;
+    -webkit-box-align: center;
+    padding: 15px;
+    background: -webkit-linear-gradient( hsl(0,0%,50%), hsl(0,0%,40%) );
+    border-top: 1px solid hsla(0,0%,100%,0.3);
+}
+
+
+
+.rssDemo-Main-aside-footer-select {
+    display: block;
+    -webkit-box-flex: 1;
+}
+
+
+/* Detail view ------------------------------------------- */
+
+.rssDemo-Main-rssView {
+    box-sizing: border-box;
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 70%
+}
+
+/**
+ * ListItem ArticlePreview Hightlight
+ */
+
+[data-montage-skin="dark"] .highlight,
+[data-montage-skin="dark"] .highlight.active {
+    box-shadow: inset 2px 0 0 hsl(210,100%,50%);
+}
+
+/**
+ * TODO: no idea here to put this, should there be a global digit stylesheet?
+ */
+[data-montage-skin="light"] {
+    background: hsl(0,0%,90%);
+}
+
+[data-montage-skin="dark"] {
+    background: hsl(0,0%,90%);
+}
